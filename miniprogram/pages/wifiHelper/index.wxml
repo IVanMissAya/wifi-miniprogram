@@ -1,0 +1,60 @@
+<!--miniprogram/pages/wifiHelper/index.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
+  <view slot="content">WIFI助手</view>
+</cu-custom>
+<view class="container">
+  <view class="box-area">
+    <view class="pic-area" hover-class="hoverClass" bindtap="wifiMethod">
+      <image src="https://static.inteagle.com.cn/inteagle-mini/icons/wifiIcon.png" class="wifiIcon"></image>
+    </view>
+  </view>
+
+  <view class="list">
+    <view class="sin-part shadow" wx:for="{{wifiList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+      <view class="row in-part">
+        <view class="column left-part">
+          <view class="text-sty">WIFI名称(SSID): {{item.SSID}}</view>
+          <view class="text-sty">BSSID: {{item.BSSID}}</view>
+        </view>
+        <view class="con-btn">
+          <button class="cu-btn round bg-olive button-hover shadow animation- " data-class="fade" role="button"
+            aria-disabled="false" bindtap="showModal" data-index="{{index}}">连接</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-modal {{modalName=='DialogModal1'?'show':''}}">
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white justify-end">
+        <view class="content">连接WIFI</view>
+      </view>
+      <form bindsubmit="concat">
+        <view class="padding-xl">
+          <view class="row mid-inp">
+            <view class="text-sty">WIFI密码:</view>
+            <view class="row input-box">
+              <input placeholder="请输入wifi密码" name="wifipass" value="{{wifiPass}}" bindinput="bindKeyInput"></input>
+              <text class="cuIcon-wifi text-orange"></text>
+            </view>
+          </view>
+        </view>
+        <view class="cu-bar bg-white justify-end" style="height:120rpx">
+          <view class="action">
+            <!-- bindtap="concat" -->
+            <button formType="reset" class="cu-btn  line-olive text-olive" bindtap="hideModal">取消</button>
+            <button formType="submit" class="cu-btn  bg-olive margin-left">确定</button>
+          </view>
+        </view>
+      </form>
+    </view>
+  </view>
+
+
+  <view class='cu-load load-modal' wx:if="{{loadModal}}">
+    <!-- <view class='cuIcon-emojifill text-orange'></view> -->
+    <!-- <image src='/images/logo.png' class='png' mode='aspectFit'></image> -->
+    <view class='gray-text'>加载中...</view>
+  </view>
+
+</view>
