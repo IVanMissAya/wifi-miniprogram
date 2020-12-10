@@ -51,10 +51,9 @@
   </view>
 
 
-  <view class='cu-load load-modal' wx:if="{{loadModal}}">
-    <!-- <view class='cuIcon-emojifill text-orange'></view> -->
-    <!-- <image src='/images/logo.png' class='png' mode='aspectFit'></image> -->
-    <view class='gray-text'>加载中...</view>
+  <!--cu-load load-modal -->
+  <view class='shadow-box' wx:if="{{loadModal}}">
+    <image src="https://image.weilanwl.com/gif/loading-white.gif" mode="aspectFit" class="gif-white response" style="height:100%;width:100%"></image>
   </view>
 
 </view>
